@@ -5,8 +5,7 @@
 from random import randrange as random
 
 
-##(Other forbidden/Limited card might still be found, if so place them here.)
-
+##(Other forbidden/Limited card might still be found, if so place them in the list bellow.)
 #Frobidden = ["Change fo Hearth",]
 Limited_spell = ["Sword of revealing light","Premature burial","Snatch steal"]
 Limited_trap = ["Call of the haunted","Magic Cylinder"]
