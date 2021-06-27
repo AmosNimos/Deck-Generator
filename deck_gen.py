@@ -11,6 +11,7 @@ Limited = True
 Frobidden_spell = ["Change fo Hearth", "Dark Hole", "Monster Reborn",]
 Limited_spell = ["Sword of Revealing Light","Premature Burial","Snatch Steal"]
 Limited_trap = ["Call of the haunted","Magic Cylinder","Mirror Force","Torrential tribute"]
+Limited_monster = ["Reflect Bounder","Sagan","Tribe-Infection Virus"]
 
 Monster = [
 "Marshmallon",
@@ -150,13 +151,18 @@ print("Spell:"+str(Spell_count))
 
 while Monster_count>len(Monster):
 	print("Error: Insuficient Monster list!")
-	print("Ajusting monster amounth.")
+	print("Reducing Monster amounth...")
 	Monster_count-=1
 	
 while Trap_count>len(Trap):
-	print("Error: Insuficient Monster list!")
-	print("Ajusting trap amounth.")
+	print("Error: Insuficient Trap list!")
+	print("Reducing Trap amounth...")
 	Trap_count-=1
+
+while Spell_count>len(Spell):
+	print("Error: Insuficient Spell list!")
+	print("Reducing Spell amounth...")
+	Spell_count-=1
 
 Deck_Monster=[]
 Deck_Trap=[]
@@ -218,4 +224,5 @@ with open("Deck/"+Deck_name+".txt", "w") as file:
 	# file.write(str(Deck))
 	for Card in Deck:
 		file.writelines(Card+"\n\n")
+
 
