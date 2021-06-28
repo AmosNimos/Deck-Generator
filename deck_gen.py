@@ -12,13 +12,20 @@ Frobidden_spell = ["Change fo Hearth", "Dark Hole", "Monster Reborn",]
 Limited_spell = ["Sword of Revealing Light","Premature Burial","Snatch Steal"]
 Limited_trap = ["Call of the haunted","Magic Cylinder","Mirror Force","Torrential tribute"]
 Limited_monster = ["Reflect Bounder","Sagan","Tribe-Infection Virus"]
+Limited_rate = 2
+
+Must_monster = ["Nimble Momonga","Nimble Momonga","Nimble Momonga","Cyber Stein","Jinzo"]
+Must_trap = ["Draining Shield"]
+Must_spell = ["Wave Motion Cannon"]
+Deck_Extra = ["Cyber End Dragon","Master Of Dragon Soldier"]
 
 Monster = [
 "Marshmallon",
 "Penguin Soldier",
+"Kuriboh",
 "Goblin Attack Force",
 "Goblin elite attack force",
-"Jinzo",
+"Jinzo #7",
 "Slate Warrior",
 "Skull Mark Ladybug",
 "Des Kangaroo",
@@ -46,14 +53,11 @@ Monster = [
 "Shadow Ghoul",
 "Shadowslayer",
 "Kiseitai",
-"Kuriboh",
 "Gyaku-gire Panda",
 "Copycat",
 "Cobra Jar",
 "Creeping Doom",
-"Cure Mermaid",
-"Jinzo #7",
-"Nimble Momonga"
+"Cure Mermaid"
 ]
 
 Monster_copy = []
@@ -64,8 +68,7 @@ while len(Monster_copy) < len(Monster):
 Trap = [
 "D.D. Trap Hole",
 "Threatening Roar",
-"Spirit Barrier",
-"Draining Shield",
+"Spirit Barrier"
 "Trap Jammer",
 "Compulsory Evacuation Device",
 "Raigeki Break",
@@ -128,9 +131,9 @@ Spell = [
 "Goblin Thief",
 "Soul Reversal",
 "Hammer Shot",
-"Wave Motion Cannon",
 "Fissure",
-"Remove Trap"
+"Remove Trap",
+"Black Pendant"
 ]
 
 Spell_copy = []
@@ -198,9 +201,25 @@ for Card in range(Spell_count):
 # Include Limited Card
 if Limited == True:
 	for Card in range(len(Limited_spell)):
-		Deck_Spell[random(len(Deck_Spell))] = Limited_spell[Card]
+		if random(Limited_rate)==1:
+			Deck_Spell[random(len(Deck_Spell))] = Limited_spell[Card]
 	for Card in range(len(Limited_trap)):
-		Deck_Trap[random(len(Deck_Trap))] = Limited_trap[Card]
+		if random(Limited_rate)==1:
+			Deck_Trap[random(len(Deck_Trap))] = Limited_trap[Card]
+
+#Must Include
+for Card in range(len(Must_monster)):
+	Deck_Monster[random(len(Deck_Monster))] = Must_monster[Card]
+
+for Card in range(len(Must_trap)):
+	Deck_Trap[random(len(Deck_Trap))] = Must_trap[Card]
+
+for Card in range(len(Must_spell)):
+	Deck_Spell[random(len(Deck_Spell))] = Must_spell[Card]
+
+#Extra Card
+for Card in range(len(Deck_Extra)):
+	Deck_Monster.append(Deck_Extra[Card])
 
 #Create Deck
 Deck_Monster.sort()
@@ -224,5 +243,4 @@ with open("Deck/"+Deck_name+".txt", "w") as file:
 	# file.write(str(Deck))
 	for Card in Deck:
 		file.writelines(Card+"\n\n")
-
 
