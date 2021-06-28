@@ -144,9 +144,9 @@ while len(Spell_copy) < len(Spell):
 Deck = []
 
 #monster trap
-Monster_count = 22
-Trap_count = 10
-Spell_count = 10
+Monster_count = int(input("Monster amount? :"))
+Trap_count = int(input("Trap amount? :"))
+Spell_count = int(input("Spell amount? :"))
 
 print("Monster:"+str(Monster_count))
 print("Trap:"+str(Trap_count))
@@ -231,8 +231,6 @@ Deck.append("\n# Trap:")
 Deck.extend(Deck_Trap)
 Deck.append("\n# Spell:")
 Deck.extend(Deck_Spell)
-
-print(Deck)
 
 Deck_name = str(input("Deck name? :"))
 if Deck_name == "":
