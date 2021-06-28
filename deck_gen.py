@@ -11,26 +11,29 @@ Limited = True
 Frobidden_spell = ["Change fo Hearth", "Dark Hole", "Monster Reborn",]
 Limited_spell = ["Sword of Revealing Light","Premature Burial","Snatch Steal"]
 Limited_trap = ["Call of the haunted","Magic Cylinder","Mirror Force","Torrential tribute"]
-Limited_monster = ["Reflect Bounder","Sagan","Tribe-Infection Virus"]
-Limited_rate = 2
+Limited_monster = ["Reflect Bounder","Sagan","Tribe-Infection Virus","Marshmallon"]
+Limited_rate = 3
 
-Must_monster = ["Nimble Momonga","Nimble Momonga","Nimble Momonga","Cyber Stein","Jinzo"]
+Must_monster = ["Nimble Momonga","Nimble Momonga","Nimble Momonga","Jinzo"]
 Must_trap = ["Draining Shield"]
-Must_spell = ["Wave Motion Cannon"]
-Deck_Extra = ["Cyber End Dragon","Master Of Dragon Soldier"]
+Must_spell = ["Wave Motion Cannon","Wave Motion Cannon","Axe of Despair","Axe of Despair","Axe of Despair"]
+Deck_Extra = ["Master of Oz (FUSION)","Cyber End Dragon (FUSION)","Master Of Dragon Soldier (FUSION)","Cyber Stein","Cyber Stein","Cyber Stein"]
+
+#Removed card
+Trunk = ["Creeping Doom Manta","Giant Rat"]
 
 Monster = [
-"Marshmallon",
+"Indomitable Fighter Lei Lei",
 "Penguin Soldier",
-"Kuriboh",
 "Goblin Attack Force",
 "Goblin elite attack force",
 "Jinzo #7",
 "Slate Warrior",
+"Spear Dragon",
+"luster Dragon"
 "Skull Mark Ladybug",
 "Des Kangaroo",
 "Des Koala",
-"Giant Rat",
 "Cybernetic Cyblopean",
 "Cyber Dragon",
 "Trap Master",
@@ -48,6 +51,7 @@ Monster = [
 "Gear Golem the moving fortress",
 "Luster Dragon",
 "Arsenal Bug",
+"Kuriboh",
 "Witch of the black forest",
 "The Fiend Megacyber",
 "Shadow Ghoul",
@@ -56,7 +60,6 @@ Monster = [
 "Gyaku-gire Panda",
 "Copycat",
 "Cobra Jar",
-"Creeping Doom",
 "Cure Mermaid"
 ]
 
@@ -102,7 +105,6 @@ Spell = [
 "Sebek blessing",
 "Premature burial",
 "Giant Turnade",
-"Axe of Despair",
 "Black Pendant",
 "Stop Defense",
 "Block Attack",
@@ -111,7 +113,6 @@ Spell = [
 "Nightmare steelcage",
 "Megamorph",
 "Scape goat",
-"Change of Heart",
 "Heavy Storm",
 "Mystical space typhoon",
 "Giant Turnade",
@@ -119,7 +120,7 @@ Spell = [
 "Meteor of Destruction",
 "Lightning Vortex",
 "Dark snake syndrome",
-"Monster reaincarnation",
+"Monster Reaincarnation",
 "Dian Keto the cure master",
 "De-Spell",
 "United We Stand",
@@ -143,14 +144,14 @@ while len(Spell_copy) < len(Spell):
 
 Deck = []
 
-#monster trap
-Monster_count = int(input("Monster amount? :"))
-Trap_count = int(input("Trap amount? :"))
-Spell_count = int(input("Spell amount? :"))
+# Default card count
+#Monster_count = 20
+#Trap_count = 10
+#Spell_count = 10
 
-print("Monster:"+str(Monster_count))
-print("Trap:"+str(Trap_count))
-print("Spell:"+str(Spell_count))
+Monster_count = int(input("(Max:"+str(len(Monster))+") Monster amount? :"))
+Trap_count = int(input("(Max:"+str(len(Trap))+") Trap amount? :"))
+Spell_count = int(input("(Max:"+str(len(Spell))+") Spell amount? :"))
 
 while Monster_count>len(Monster):
 	print("Error: Insuficient Monster list!")
@@ -166,6 +167,12 @@ while Spell_count>len(Spell):
 	print("Error: Insuficient Spell list!")
 	print("Reducing Spell amounth...")
 	Spell_count-=1
+
+print("Monster:"+str(Monster_count))
+print("Trap:"+str(Trap_count))
+print("Spell:"+str(Spell_count))
+print("Extra:"+str(len(Deck_Extra)))
+print("Total:"+str(len(Deck_Extra)+Spell_count+Trap_count+Monster_count))
 
 Deck_Monster=[]
 Deck_Trap=[]
@@ -217,7 +224,6 @@ for Card in range(len(Must_trap)):
 for Card in range(len(Must_spell)):
 	Deck_Spell[random(len(Deck_Spell))] = Must_spell[Card]
 
-#Extra Card
 for Card in range(len(Deck_Extra)):
 	Deck_Monster.append(Deck_Extra[Card])
 
@@ -235,7 +241,7 @@ Deck.extend(Deck_Spell)
 Deck_name = str(input("Deck name? :"))
 if Deck_name == "":
 	Deck_name = "Deck_"+str(random(9))+str(random(9))+str(random(9))+str(random(9))
-
+print("Saved as: Deck/"+Deck_name+".txt")
 with open("Deck/"+Deck_name+".txt", "w") as file:
 	# Writing data to a file
 	# file.write(str(Deck))
